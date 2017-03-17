@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,18 +41,51 @@
                                     <action selector="changeTitleAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ABY-Ma-ODp"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="75" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="VD4-Sl-E0Z">
+                                <rect key="frame" x="0.0" y="118" width="375" height="549"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="1tO-HT-Yju" rowHeight="75" style="IBUITableViewCellStyleDefault" id="hUU-Pf-ndI">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUU-Pf-ndI" id="d5h-Bb-nzQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1tO-HT-Yju">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="74"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="dOg-ZG-KRX"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="4KO-KH-8c4"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="VD4-Sl-E0Z" firstAttribute="top" secondItem="jG3-TL-nGt" secondAttribute="bottom" constant="25" id="6AB-06-Ffm"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VD4-Sl-E0Z" secondAttribute="bottom" id="D4J-Un-zDf"/>
                             <constraint firstItem="Ip5-Xi-gRV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="12" id="ScS-wI-6Ca"/>
                             <constraint firstItem="5mQ-jU-efG" firstAttribute="centerY" secondItem="jG3-TL-nGt" secondAttribute="centerY" id="VRc-ek-5b8"/>
                             <constraint firstItem="5mQ-jU-efG" firstAttribute="leading" secondItem="jG3-TL-nGt" secondAttribute="trailing" constant="10" id="XGE-K9-dQ4"/>
+                            <constraint firstItem="VD4-Sl-E0Z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="cvk-Ey-MP7"/>
                             <constraint firstItem="jG3-TL-nGt" firstAttribute="top" secondItem="Ip5-Xi-gRV" secondAttribute="bottom" constant="10" id="dXh-6i-Y2T"/>
                             <constraint firstItem="Ip5-Xi-gRV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jiy-ft-dqB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VD4-Sl-E0Z" secondAttribute="trailing" constant="-16" id="oOM-vS-X66"/>
                             <constraint firstItem="jG3-TL-nGt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uky-hj-Fpa"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="VD4-Sl-E0Z" id="QMA-aJ-Bfl"/>
                         <outlet property="textField" destination="jG3-TL-nGt" id="ReF-q0-jzy"/>
                         <outlet property="titleLabel" destination="Ip5-Xi-gRV" id="8Qn-Jd-oxe"/>
                     </connections>
