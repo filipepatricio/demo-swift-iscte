@@ -81,10 +81,22 @@ extension ViewController: UITableViewDataSource{
     
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    NSLog("You selected cell number: \(indexPath.row)!")
+    self.performSegue(withIdentifier: "ShowMovieDetail", sender: self)
+    tableView.cellForRow(at: indexPath)?.isSelected = false
+  }
 }
 
 
 extension ViewController: UITableViewDelegate{
   
+}
+
+extension ViewController: UINavigationControllerDelegate{
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //TODO:
+  }
 }
 

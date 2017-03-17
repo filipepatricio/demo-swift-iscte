@@ -14,6 +14,7 @@
 		9B8225831E7C145C00DB9231 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B8225821E7C145C00DB9231 /* Assets.xcassets */; };
 		9B8225861E7C145C00DB9231 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B8225841E7C145C00DB9231 /* LaunchScreen.storyboard */; };
 		9B82258E1E7C6C4B00DB9231 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82258D1E7C6C4B00DB9231 /* Movie.swift */; };
+		9B8225901E7C8A1000DB9231 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B82258F1E7C8A1000DB9231 /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		9B8225851E7C145C00DB9231 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B8225871E7C145C00DB9231 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B82258D1E7C6C4B00DB9231 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		9B82258F1E7C8A1000DB9231 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		AB63022BFE6DA6571CEF94D9 /* Pods_demo_swift_iscte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demo_swift_iscte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B311ADCDB8727A4312FC65D1 /* Pods-demo-swift-iscte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo-swift-iscte.release.xcconfig"; path = "Pods/Target Support Files/Pods-demo-swift-iscte/Pods-demo-swift-iscte.release.xcconfig"; sourceTree = "<group>"; };
 		D606ACDCCC8A3BCC99E41D9B /* Pods-demo-swift-iscte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo-swift-iscte.debug.xcconfig"; path = "Pods/Target Support Files/Pods-demo-swift-iscte/Pods-demo-swift-iscte.debug.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				9B8225841E7C145C00DB9231 /* LaunchScreen.storyboard */,
 				9B8225871E7C145C00DB9231 /* Info.plist */,
 				9B82258D1E7C6C4B00DB9231 /* Movie.swift */,
+				9B82258F1E7C8A1000DB9231 /* MovieDetailViewController.swift */,
 			);
 			path = "demo-swift-iscte";
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8225901E7C8A1000DB9231 /* MovieDetailViewController.swift in Sources */,
 				9B82257E1E7C145C00DB9231 /* ViewController.swift in Sources */,
 				9B82257C1E7C145C00DB9231 /* AppDelegate.swift in Sources */,
 				9B82258E1E7C6C4B00DB9231 /* Movie.swift in Sources */,
