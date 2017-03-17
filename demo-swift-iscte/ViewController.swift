@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import Gloss
 
 class ViewController: UIViewController {
   
@@ -14,7 +16,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var tableView: UITableView!
   
-  var names: [String] = []
+  var movieResults: [MovieResult] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,20 +30,39 @@ class ViewController: UIViewController {
   
   @IBAction func changeTitleAction(_ sender: Any) {
     //    self.titleLabel.text = self.textField.text
-    guard let name = self.textField.text else{
+    guard let title = self.textField.text else{
       print("self.textField.text shouldn't be nil")
       return
     }
     
-    self.names.append(name)
-    self.tableView.reloadData()
+    self.getMovies(withTitle:title)
+  }
+  
+  func getMovies(withTitle title:String){
+    
+    let titleEndoded = title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+    Alamofire.request("https://www.omdbapi.com/?s=\(titleEndoded)").responseJSON { response in
+      debugPrint(response)
+      
+      if let json = response.result.value as? JSON {
+        print("JSON: \(json)")
+        let searchResult = MoviesSearchResult(json: json)
+        if let movieResults = searchResult?.movieResults{
+          self.movieResults = movieResults
+        }else{
+          print("No Results")
+          self.movieResults = []
+        }
+        self.tableView.reloadData()
+      }
+    }
   }
   
 }
 
 extension ViewController: UITableViewDataSource{
   public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-    return self.names.count
+    return self.movieResults.count
   }
   
   public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -53,7 +74,7 @@ extension ViewController: UITableViewDataSource{
       fatalError()
     }
     
-    cellTextLabel.text = self.names[indexPath.row]
+    cellTextLabel.text = self.movieResults[indexPath.row].title
     
     return cell
   }
