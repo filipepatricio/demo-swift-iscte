@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var textField: UITextField!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,6 +23,9 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
+  @IBAction func changeTitleAction(_ sender: Any) {
+    self.titleLabel.text = self.textField.text
+  }
 
 }
 
