@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 import Gloss
 
 class ViewController: UIViewController {
@@ -67,14 +68,16 @@ extension ViewController: UITableViewDataSource{
   
   public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    let cell: UITableViewCell = UITableViewCell (style: UITableViewCellStyle.subtitle, reuseIdentifier: "subtitleCell")
     
-    guard let cellTextLabel = cell.textLabel else{
-      print("cell.textLabel shouldn't be nil")
-      fatalError()
+    cell.textLabel?.text = self.movieResults[indexPath.row].title
+    cell.detailTextLabel?.text =  self.movieResults[indexPath.row].year
+    if let poster = self.movieResults[indexPath.row].poster{
+      
+      let imageUrl = URL(string: poster)!
+      cell.imageView?.af_setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "movie-icon"))
     }
     
-    cellTextLabel.text = self.movieResults[indexPath.row].title
     
     return cell
   }
