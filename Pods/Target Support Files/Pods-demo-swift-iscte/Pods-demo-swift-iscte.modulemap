@@ -1,0 +1,6 @@
+framework module Pods_demo_swift_iscte {
+  umbrella header "Pods-demo-swift-iscte-umbrella.h"
+
+  export *
+  module * { export * }
+}
