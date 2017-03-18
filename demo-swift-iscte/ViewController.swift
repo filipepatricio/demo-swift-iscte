@@ -18,17 +18,14 @@ class ViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   var movieResults: [MovieResult] = []
+  var movieSelectedIndex: Int?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-  
+  //MARK: - Search button action
   @IBAction func changeTitleAction(_ sender: Any) {
     //    self.titleLabel.text = self.textField.text
     guard let title = self.textField.text else{
@@ -39,8 +36,8 @@ class ViewController: UIViewController {
     self.getMovies(withTitle:title)
   }
   
+  //MARK: - Network Request To Search Movie by title
   func getMovies(withTitle title:String){
-    
     let titleEndoded = title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     Alamofire.request("https://www.omdbapi.com/?s=\(titleEndoded)").responseJSON { response in
       debugPrint(response)
@@ -61,11 +58,14 @@ class ViewController: UIViewController {
   
 }
 
+
 extension ViewController: UITableViewDataSource{
+  //MARK: - Required to table's row
   public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
     return self.movieResults.count
   }
   
+  //MARK: - Customize Cell
   public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
     
     let cell: UITableViewCell = UITableViewCell (style: UITableViewCellStyle.subtitle, reuseIdentifier: "subtitleCell")
@@ -78,25 +78,33 @@ extension ViewController: UITableViewDataSource{
       cell.imageView?.af_setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "movie-icon"))
     }
     
-    
     return cell
   }
   
+  //MARK: - Tap on cell action (Navigation)
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     NSLog("You selected cell number: \(indexPath.row)!")
+    self.movieSelectedIndex = indexPath.row
     self.performSegue(withIdentifier: "ShowMovieDetail", sender: self)
     tableView.cellForRow(at: indexPath)?.isSelected = false
+    
   }
 }
 
+extension ViewController: UITableViewDelegate{}
 
-extension ViewController: UITableViewDelegate{
-  
-}
 
 extension ViewController: UINavigationControllerDelegate{
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //TODO:
+  //MARK: - Pass movie to MovieDetailViewController throw navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let destinationSegue = segue.destination as? MovieDetailViewController,
+      let movieSelectedIndex = self.movieSelectedIndex else {
+        print("MovieDetailViewController and movieSelectedIndex are expected")
+        return
+    }
+    
+    destinationSegue.movieResult = self.movieResults[movieSelectedIndex]
   }
+  
 }
 

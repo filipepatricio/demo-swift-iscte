@@ -9,8 +9,50 @@
 import UIKit
 import Gloss
 
+//MARK: - Models
 struct Movie {
-  //TODO: with full movie
+  let actors: String?
+  let awards: String?
+  let country: String?
+  let director: String?
+  let genre: String?
+  let language: String?
+  let metascore: String?
+  let plot: String?
+  let poster: String?
+  let rated: String?
+  let released: String?
+  let runtime: String?
+  let title: String?
+  let type: String?
+  let writer: String?
+  let year: String?
+  let imdbId: String?
+  let imdbRating: String?
+  let imdbVotes: String?
+  // MARK: - Deserialization
+  
+  init?(json: JSON) {
+    self.actors = "Actors" <~~ json
+    self.awards = "Awards" <~~ json
+    self.country = "Country" <~~ json
+    self.director = "Director" <~~ json
+    self.genre = "Genre" <~~ json
+    self.language = "Language" <~~ json
+    self.metascore = "Metascore" <~~ json
+    self.plot = "Plot" <~~ json
+    self.poster = "Poster" <~~ json
+    self.rated = "Rated" <~~ json
+    self.released = "Released" <~~ json
+    self.runtime = "Runtime" <~~ json
+    self.title = "Title" <~~ json
+    self.type = "Type" <~~ json
+    self.writer = "Writer" <~~ json
+    self.year = "Year" <~~ json
+    self.imdbId = "imdbID" <~~ json
+    self.imdbRating = "imdbRating" <~~ json
+    self.imdbVotes = "imdbVotes" <~~ json
+  }
 }
 
 struct MovieResult {
