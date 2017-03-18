@@ -39,7 +39,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="1tO-HT-Yju" detailTextLabel="bW8-Hw-McR" imageView="SnS-Ah-lMw" rowHeight="75" style="IBUITableViewCellStyleSubtitle" id="hUU-Pf-ndI">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUU-Pf-ndI" id="d5h-Bb-nzQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
@@ -110,7 +110,7 @@
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
         </scene>
-        <!--Movie Detail View Controller-->
+        <!--Movie Title-->
         <scene sceneID="MQK-kU-7bn">
             <objects>
                 <viewController id="sdQ-JA-iPN" customClass="MovieDetailViewController" customModule="demo_swift_iscte" customModuleProvider="target" sceneMemberID="viewController">
@@ -245,6 +245,13 @@
                             <constraint firstItem="2vG-7n-Bfg" firstAttribute="top" secondItem="dAj-pY-XJH" secondAttribute="top" id="sTe-Hu-JZr"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Movie Title" id="6gC-gd-Vo1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="hDD-DN-L0h">
+                            <connections>
+                                <action selector="shareAction:" destination="sdQ-JA-iPN" id="flc-wX-FqW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="actorsLabel" destination="n26-GF-fCl" id="dpv-9N-s3g"/>
                         <outlet property="directorLabel" destination="5hj-Z2-aLh" id="3uv-B5-dNx"/>

@@ -23,6 +23,7 @@ class MovieDetailViewController: UIViewController {
   @IBOutlet weak var plotLabel: UILabel!
   
   var movieResult: MovieResult?
+  var movie: Movie?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,7 +33,7 @@ class MovieDetailViewController: UIViewController {
       return
     }
     // Set movie title to navigationBar:
-    self.navigationItem.title = movieResult.title 
+    self.navigationItem.title = movieResult.title
     self.getMovie(withImdbId: movieResult.imdbId)
   }
   
@@ -44,6 +45,7 @@ class MovieDetailViewController: UIViewController {
       if let json = response.result.value as? JSON {
         print("JSON: \(json)")
         let movie = Movie(json: json)!
+        self.movie = movie
         self.fillMovieInfo(withMovie: movie)
       }
     }
@@ -61,4 +63,21 @@ class MovieDetailViewController: UIViewController {
     self.plotLabel.text = movie.plot ?? "Plot not set"
   }
   
+  // MARK: - Share action
+  @IBAction func shareAction(_ sender: UIButton) {
+    
+    guard let movie = self.movie else{
+      print("movie is not set")
+      return
+    }
+    
+    let textToShare = "You must see \(movie.title!)!! It's awesome"
+    
+    let objectsToShare = [textToShare, self.imageView.image ?? #imageLiteral(resourceName: "movie-icon")] as [Any]
+    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+      
+    activityVC.popoverPresentationController?.sourceView = sender
+    self.present(activityVC, animated: true, completion: nil)
+
+  }
 }
